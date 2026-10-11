@@ -55,9 +55,9 @@ function initTypingEffect() {
 
   const roles = [
     'Electronics Engineering Student',
-    'Embedded Systems & IoT Enthusiast',
-    'Web Developer & Creative Coder',
-    'Robotics & Circuit Design Explorer'
+    'Embedded Systems & IoT Prototyper',
+    'Circuit & PCB Design Enthusiast',
+    'Microcontroller & Hardware Builder'
   ];
 
   let roleIdx = 0;
@@ -236,78 +236,78 @@ function initProjectFilters() {
 }
 
 /* --------------------------------------------------------------------------
-   6. Project Details & Resume Modals
+   6. Project Details Modal
    -------------------------------------------------------------------------- */
 const PROJECT_DATA = {
   smarthome: {
     title: 'Smart Home Automation System',
     category: 'IoT & Embedded',
-    image: 'assets/images/project-analytics.jpg',
-    metric: '4 Sensors | Real-Time Web Dashboard',
-    overview: 'An ESP32-based home automation system with real-time sensor monitoring (temperature, humidity, gas), relay-controlled appliances, and a web dashboard accessible over Wi-Fi.',
-    challenges: 'Learned about MQTT protocol, asynchronous sensor polling, relay logic, and building a responsive web interface that updates live sensor values without page refresh.',
-    solution: 'Used ESP32 with DHT22, MQ-2, and LDR sensors communicating over MQTT. Built a lightweight HTML/CSS/JS dashboard served by the ESP32 itself, with WebSocket-based live data updates.',
-    tech: ['ESP32', 'Arduino IDE', 'HTML/CSS/JS', 'MQTT', 'DHT22', 'Relay Module'],
+    image: 'project-analytics.jpg',
+    metric: '4 Sensors | Optoisolated Relay Control',
+    overview: 'An ESP32-based hardware automation system with multi-sensor monitoring (temperature, humidity, gas leak), optoisolated relay drivers, and wireless MQTT telemetry.',
+    challenges: 'Handled optocoupler isolation to suppress inductive back-EMF transients from resetting the MCU, calibrated analog sensor ADC curves, and implemented watchdog timers.',
+    solution: 'Designed custom sensor breakout board interfacing DHT22, MQ-2, and LDR to ESP32 with hardware filtering. Implemented optoisolated transistor array to drive high-current 230V relays safely with flyback protection diodes.',
+    tech: ['ESP32', 'Optocoupler Drivers', 'Sensor Calibration', 'MQTT Telemetry', 'Relay Logic'],
     liveUrl: '#',
     githubUrl: 'https://github.com/shivamsharma/smart-home'
   },
   weatherstation: {
     title: 'IoT Weather Station',
     category: 'IoT & Embedded',
-    image: 'assets/images/project-ai.jpg',
-    metric: 'Cloud Data Logging | OLED Display',
-    overview: 'A portable weather monitoring station built with Arduino Nano and BME280/DHT22 sensors, logging temperature, humidity, and pressure data to ThingSpeak for cloud visualization.',
-    challenges: 'Gained experience with I2C communication protocols, power management for portable operation, and integrating with cloud IoT platforms for data logging and visualization.',
+    image: 'project-ai.jpg',
+    metric: 'I2C Bus | Cloud Data Logging | OLED Display',
+    overview: 'A portable weather monitoring station built with Arduino Nano and BME280/DHT22 sensors over I2C, logging atmospheric temperature, humidity, and barometric pressure to ThingSpeak.',
+    challenges: 'Gained experience with I2C communication timing, pull-up resistor sizing, power management for portable battery operation, and cloud IoT telemetry.',
     solution: 'Connected BME280 sensor via I2C to Arduino Nano, displayed readings on SSD1306 OLED, and transmitted data to ThingSpeak via ESP8266 Wi-Fi module for cloud graphing.',
-    tech: ['Arduino Nano', 'BME280', 'ESP8266', 'ThingSpeak', 'OLED SSD1306', 'I2C'],
+    tech: ['Arduino Nano', 'BME280 (I2C)', 'ESP8266', 'ThingSpeak', 'OLED SSD1306'],
     liveUrl: '#',
     githubUrl: 'https://github.com/shivamsharma/weather-station'
   },
-  portfolio: {
-    title: 'Personal Portfolio Website',
-    category: 'Web Development',
-    image: 'assets/images/project-fintech.jpg',
-    metric: 'Fully Responsive | Dark & Light Mode',
-    overview: 'A modern, responsive portfolio website (this very site!) featuring dark/light theme switching, glassmorphism design, animated skill bars, interactive project modals, and smooth scroll-spy navigation.',
-    challenges: 'Learned advanced CSS techniques like glassmorphism and custom properties, JavaScript DOM manipulation for interactive filtering, and how to structure a complete multi-section website.',
-    solution: 'Built entirely with vanilla HTML5, CSS3 (with custom properties for theming), and JavaScript. Used IntersectionObserver for scroll animations, localStorage for theme persistence, and modular JS architecture.',
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Responsive Design'],
+  powersupply: {
+    title: 'Adjustable DC Bench Power Supply (0–30V, 5A)',
+    category: 'Circuits & Power',
+    image: 'project-fintech.jpg',
+    metric: 'Linear Regulation | Current Limiting Protection',
+    overview: 'Laboratory-grade dual-rail linear DC power supply with variable 0–30V voltage regulation, active short-circuit shutdown, transistor heat dissipation calculation, and digital V/A metering.',
+    challenges: 'Calculated transformer VA ratings and reservoir filter capacitor sizing; designed thermal heat sinking for series pass transistors under maximum voltage drops; stabilized closed-loop feedback against oscillation under inductive loads.',
+    solution: 'Designed analog regulator circuit in LTspice with op-amp error amplifiers and high-power bypass transistors. Laid out 2-layer PCB in KiCad with wide power traces, star-ground topology, and integrated panel meters.',
+    tech: ['LM317 / Pass Transistors', 'KiCad PCB Layout', 'LTspice', 'Thermal Heatsinks', 'Analog Regulation'],
     liveUrl: '#',
-    githubUrl: 'https://github.com/shivamsharma/portfolio'
+    githubUrl: 'https://github.com/shivamsharma/bench-power-supply'
   },
   robotcar: {
     title: 'Line Following & Obstacle Avoidance Robot',
-    category: 'Electronics & Hardware',
-    image: 'assets/images/project-ai.jpg',
+    category: 'Robotics & Testing',
+    image: 'project-ai.jpg',
     metric: 'PID Control | 5 IR Sensors | Ultrasonic',
-    overview: 'An Arduino-powered autonomous robot that follows a black line track using IR sensors and dynamically avoids obstacles with ultrasonic sensors, featuring PID-controlled motor speed.',
-    challenges: 'Understood PID control theory and tuned it for smooth line-following, dealt with sensor noise filtering, and managed motor driver PWM for precise speed control.',
+    overview: 'An autonomous differential-drive robot that tracks paths using a 5-channel IR sensor array and avoids obstacles with ultrasonic echo sensors, driven by closed-loop PID motor speed control.',
+    challenges: 'Understood PID control theory and tuned it for smooth line-following, dealt with optical sensor noise filtering, and managed motor driver PWM for precise speed control.',
     solution: 'Used 5-channel IR sensor array for line detection with PID algorithm for smooth turns. HC-SR04 ultrasonic sensor triggers obstacle avoidance mode. L298N motor driver controls two DC motors.',
     tech: ['Arduino UNO', 'L298N Motor Driver', 'IR Sensor Array', 'HC-SR04', 'PID Algorithm'],
     liveUrl: '#',
     githubUrl: 'https://github.com/shivamsharma/line-follower-robot'
   },
-  calculator: {
-    title: 'Scientific Calculator Web App',
-    category: 'Web Development',
-    image: 'assets/images/project-analytics.jpg',
-    metric: 'Full Scientific Functions | Keyboard Support',
-    overview: 'A feature-rich scientific calculator web application with trigonometric functions, logarithms, history panel, keyboard support, and a clean glassmorphism dark UI.',
-    challenges: 'Learned about parsing mathematical expressions, handling operator precedence, managing calculation history state, and implementing keyboard event listeners.',
-    solution: 'Built with vanilla JavaScript using eval-safe expression parsing, CSS Grid for button layout, and localStorage for calculation history persistence.',
-    tech: ['HTML5', 'CSS Grid', 'JavaScript', 'Math.js'],
+  logicanalyzer: {
+    title: '8-Channel Digital Logic Analyzer',
+    category: 'Circuits & Power',
+    image: 'project-analytics.jpg',
+    metric: '24MHz Sampling | I2C, SPI & UART Decoding',
+    overview: 'A 24MHz high-speed hardware digital logic analyzer streaming raw pin captures over USB to PulseView/Sigrok for real-time protocol decoding of I2C, SPI, and UART digital communications.',
+    challenges: 'Maintained signal integrity on high-speed traces, implemented input clamping protection against over-voltage, and optimized microcontroller DMA streaming over USB-CDC.',
+    solution: 'Built input protection buffer network with Schottky clamp diodes and series damping resistors. Configured microcontroller DMA transfer to stream logic transitions directly to Sigrok PulseView for protocol analysis.',
+    tech: ['STM32 / ARM Cortex', 'PulseView / Sigrok', 'I2C / SPI / UART', 'DMA Transfers', 'Hardware Debugging'],
     liveUrl: '#',
-    githubUrl: 'https://github.com/shivamsharma/sci-calculator'
+    githubUrl: 'https://github.com/shivamsharma/logic-analyzer'
   },
   signalgen: {
     title: 'DIY Function Signal Generator',
-    category: 'Electronics & Hardware',
-    image: 'assets/images/project-fintech.jpg',
-    metric: '3 Waveforms | 20Hz–20kHz Range',
-    overview: 'A custom-built function generator capable of producing sine, square, and triangular waveforms using op-amp oscillator circuits, with adjustable frequency and amplitude controls.',
+    category: 'Circuits & Power',
+    image: 'project-fintech.jpg',
+    metric: '3 Waveforms | 20Hz–20kHz Range | Op-Amp',
+    overview: 'A custom-built analog function generator producing sine, square, and triangular waveforms using op-amp Wien bridge and integrator topologies with adjustable frequency and amplitude controls.',
     challenges: 'Deepened understanding of op-amp oscillator topologies (Wien bridge, astable multivibrator), frequency stability, and analog signal conditioning.',
     solution: 'Designed Wien bridge oscillator for sine waves, Schmitt trigger for square waves, and integrator circuit for triangle waves. Simulated in LTspice before building on perfboard, then designed PCB in KiCad.',
-    tech: ['Op-Amps (741)', 'Wien Bridge Oscillator', 'PCB (KiCad)', 'LTspice Simulation'],
+    tech: ['Op-Amps (741)', 'Wien Bridge Oscillator', 'KiCad PCB', 'LTspice Simulation'],
     liveUrl: '#',
     githubUrl: 'https://github.com/shivamsharma/signal-generator'
   }
@@ -317,10 +317,6 @@ function initModals() {
   const modalOverlay = document.getElementById('project-modal');
   const modalCloseBtn = document.getElementById('modal-close');
   const projectDetailBtns = document.querySelectorAll('[data-project-btn]');
-
-  const resumeModal = document.getElementById('resume-modal');
-  const resumeCloseBtn = document.getElementById('resume-close');
-  const resumeTriggers = document.querySelectorAll('[data-resume-trigger]');
 
   // Project Modal Open
   projectDetailBtns.forEach(btn => {
@@ -373,41 +369,15 @@ function initModals() {
     });
   }
 
-  // Resume Modal Open/Close
-  resumeTriggers.forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (resumeModal) {
-        resumeModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-  });
-
-  if (resumeCloseBtn) {
-    resumeCloseBtn.addEventListener('click', closeResumeModal);
-  }
-  if (resumeModal) {
-    resumeModal.addEventListener('click', (e) => {
-      if (e.target === resumeModal) closeResumeModal();
-    });
-  }
-
   // Keyboard escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeModal();
-      closeResumeModal();
     }
   });
 
   function closeModal() {
     if (modalOverlay) modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  function closeResumeModal() {
-    if (resumeModal) resumeModal.classList.remove('active');
     document.body.style.overflow = '';
   }
 }
@@ -509,7 +479,7 @@ function initContactForm() {
 
     // Check if the access key is present
     if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
-      showToast('Please add your Web3Forms access key in js/main.js to receive messages!', 'error');
+      showToast('Please add your Web3Forms access key in main.js to receive messages!', 'error');
       return;
     }
 
